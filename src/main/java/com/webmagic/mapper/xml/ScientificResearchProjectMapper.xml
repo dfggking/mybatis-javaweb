@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.webmagic.mapper.ScientificResearchProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.webmagic.model.ScientificResearchProject" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="from_time" property="fromTime" jdbcType="DATE" />
+    <result column="to_time" property="toTime" jdbcType="DATE" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from scientific_research_project
+    where `id` = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.webmagic.model.ScientificResearchProject" >
+    insert into scientific_research_project (`id`, `title`, `content`, 
+      `from_time`, `to_time`, `level`, 
+      `create_time`)
+    values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{fromTime,jdbcType=DATE}, #{toTime,jdbcType=DATE}, #{level,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.webmagic.model.ScientificResearchProject" >
+    update scientific_research_project
+    set `title` = #{title,jdbcType=VARCHAR},
+      `content` = #{content,jdbcType=VARCHAR},
+      `from_time` = #{fromTime,jdbcType=DATE},
+      `to_time` = #{toTime,jdbcType=DATE},
+      `level` = #{level,jdbcType=VARCHAR},
+      `create_time` = #{createTime,jdbcType=TIMESTAMP}
+    where `id` = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select `id`, `title`, `content`, `from_time`, `to_time`, `level`, `create_time`
+    from scientific_research_project
+    where `id` = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `id`, `title`, `content`, `from_time`, `to_time`, `level`, `create_time`
+    from scientific_research_project
+  </select>
+</mapper>

@@ -8,7 +8,6 @@
   <properties resource="jdbc.properties"></properties>
   <!--定义别名-->
   <typeAliases>
-    <typeAlias alias="feedback" type="com.dfgg.entity.Feedback"></typeAlias>
   </typeAliases>
   
   <environments default="development">
@@ -26,7 +25,6 @@
   </environments>
   
   <mappers>
-    <mapper resource="mapper/FeedbackMapper.xml" />
   </mappers>
 </configuration>
     
